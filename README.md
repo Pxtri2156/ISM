@@ -76,12 +76,12 @@ ISM is a framework that combines the predictive power of deep learning with impr
 
 #### Regression Example
 ```bash
-python src/ism/xai_reg.py --data_path dataset/breast_cancer_uci.csv --data_name breast_cancer --lambda_reg 3 --no_seeds 5
+python src/ism/xai_reg.py --data_path dataset/boston_housing.csv --data_name breast_cancer --lambda_reg 3 --no_seeds 5
 ```
 
 #### Classification Example
 ```bash
-python src/ism/xai_cls.py --data_path dataset/iris.csv --data_name iris --no_seeds 5
+python src/ism/xai_cls.py --data_path dataset/breast_cancer_uci.csv --data_name iris --no_seeds 5
 ```
 
 ## Results
@@ -105,7 +105,7 @@ To compute the average results across multiple runs with different random seeds,
    ```bash
    python src/ism/average_graph.py --root_path run/ --data_name [dataset_name]
    ```
-   Replace `[dataset_name]` with the name of your dataset (e.g., `breast_cancer`, `iris`).
+   Replace `[dataset_name]` with the name of your dataset (e.g., `breast_cancer`, `boston_housing`).
 
 ### Example Command
 

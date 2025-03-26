@@ -5,7 +5,7 @@ import argparse
 import json
 from ism.locally_connected import LocallyConnected
 from ism.lbfgsb_scipy import LBFGSBScipy
-from notears.trace_expm import trace_expm
+from ism.trace_expm import trace_expm
 import torch
 import torch.nn as nn
 import numpy as np
@@ -16,7 +16,7 @@ import ism.utils as ut
 from sklearn.metrics import classification_report, f1_score, accuracy_score, r2_score
 import networkx as nx 
 import matplotlib.pyplot as plt
-LBFGSBGPU
+
 
 class NotearsMLP(nn.Module):
     def __init__(self, dims, bias=True):
@@ -231,7 +231,6 @@ def main(args):
         model = NotearsMLP(dims=[d, 10, 1], bias=True)
         W_est = notears_nonlinear(model, X_train, wandb, args.lambda_reg, args.lambda1, args.lambda2)
         # assert ut.is_dag(W_est)
-        print('Estimated: \n', W_est, W_est.shape)
         np.savetxt(out_folder + 'W_est.csv', W_est, delimiter=',')
         
         # Evaluation regression on test set
@@ -248,8 +247,8 @@ def main(args):
         # labels = ut.get_labels(args.data_name)
         # ut.draw_directed_graph(W_est, vis_path, labels) 
         
-        print("test_loss: ", test_loss)
-        print("r2_scores: ", r2)
+
+        print(f"seed: {seed}, test_loss: {test_loss}, r2_scores: {r2}")
         wandb.log({'test_loss': test_loss})
         wandb.log({'r2_scores': r2})
         test_loss_lst.append(test_loss)

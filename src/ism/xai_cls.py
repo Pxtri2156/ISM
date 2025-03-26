@@ -6,7 +6,7 @@ import json
 import seaborn as sns
 from ism.locally_connected import LocallyConnected
 from ism.lbfgsb_scipy import LBFGSBScipy
-from notears.trace_expm import trace_expm
+from ism.trace_expm import trace_expm
 import torch
 import torch.nn as nn
 import numpy as np
